@@ -1,4 +1,4 @@
-import React from 'react'
+import {React, Fragment} from 'react'
 import NameList from './NameList'
 
 function ShortList({names, shortList, setShortList}) {
@@ -8,9 +8,21 @@ function ShortList({names, shortList, setShortList}) {
         setShortList(shortList.filter((i) => i !== id))
     }
 
+    const hasNames = shortListedNames.length > 0;
+
     return (
         <div className="short-list">
-        <NameList nameList={shortListedNames} onItemClick={removeFromShortList}/>
+            <h2>{hasNames ? "Our shortlist" : "Click on a name to put it on our shortlist"}</h2>
+            {/* Show NameList and hr only if hasNames is true: */}
+            {hasNames && (
+                <Fragment>
+                    <NameList 
+                        nameList={shortListedNames} 
+                        onItemClick={removeFromShortList}
+                    />
+                    <hr/>
+                </Fragment>
+            )}
         </div>
         
     )
