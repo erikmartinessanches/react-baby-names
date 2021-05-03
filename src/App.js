@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React, {useState, Fragment} from 'react'
 
 import NamePicker from './components/NamePicker'
 import Search from './components/Search'
@@ -6,10 +6,12 @@ import Search from './components/Search'
  * destructure in the argument parenthesis and only receive
  * names property. */
 function App({names}) {
+  const [searchValue, setSearchValue] = useState("") //Passing an initial default name...
+
   return (
     <Fragment>
-      <Search />
-      <NamePicker names={names} />
+      <Search searchValue={searchValue} setSearchValue={setSearchValue}/>
+      <NamePicker names={names} searchValue={searchValue}/>
     </Fragment>
     
   );

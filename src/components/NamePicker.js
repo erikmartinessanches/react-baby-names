@@ -1,9 +1,13 @@
 import React from 'react'
 
-function NamePicker({names}) {
+function NamePicker({names, searchValue}) {
+    const filteredNames = names.filter((entry)=>
+        entry.name.toLowerCase().includes(searchValue.toLowerCase())
+    )
+
     return (
         <ul>
-            {names.map(entry => <li className={entry.sex} key={entry.id}><button>{entry.name}</button></li>)}
+            {filteredNames.map(entry => <li className={entry.sex} key={entry.id}><button>{entry.name}</button></li>)}
         </ul>
     );
 }
