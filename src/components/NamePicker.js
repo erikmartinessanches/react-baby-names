@@ -1,7 +1,12 @@
-import React from 'react'
+//Consuming the context NamesContext
+import React, {useContext} from 'react'
 import NameList from './NameList'
+import {NamesContext} from '../providers/Names'
 
-function NamePicker({names, searchValue, shortList, setShortList}) {
+function NamePicker({searchValue, shortList, setShortList}) {
+    /**Consuming NamesContext using useContext hook to retrieve our names. */
+    const names = useContext(NamesContext)
+
     const filteredNames = names
     .filter((entry)=> //Only show names in the NamePicker containing the value in the search box.
         entry.name.toLowerCase().includes(searchValue.toLowerCase()) 

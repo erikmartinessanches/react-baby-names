@@ -5,13 +5,13 @@ import "normalize-css";
 import "./css/styles.css";
 //Components
 import App from './App';
-//Data
-import {names} from './data';
-
+import {NamesProvider} from './providers/Names'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App names={names}/>
+    <NamesProvider>
+      <App />
+    </NamesProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
