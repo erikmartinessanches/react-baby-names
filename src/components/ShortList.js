@@ -1,10 +1,10 @@
 //Consuming the context NamesContext
-import {React, Fragment, useContext} from 'react'
+import {React, Fragment} from 'react'
 import NameList from './NameList'
-import {NamesContext} from '../providers/Names'
+import {useNames} from '../providers/Names'
 
 function ShortList({shortList, setShortList}) {
-    const names = useContext(NamesContext)
+    const names = useNames()
 
     const shortListedNames = names.filter((entry) => shortList.includes(entry.id))
 
